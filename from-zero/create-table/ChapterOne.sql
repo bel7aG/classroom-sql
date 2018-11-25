@@ -1,6 +1,6 @@
--- DROP VIEW ClientTun;
--- DROP VIEW ClientCom;
--- DROP VIEW ArtCom;
+DROP VIEW ClientTun;
+DROP VIEW ClientCom;
+DROP VIEW ArtCom;
 DROP TABLE Employe;
 DROP SEQUENCE codeF_seq;
 DROP TABLE Facture;
@@ -245,3 +245,21 @@ Create Table Employe(
 	mng Number(4),
 	CONSTRAINT cp_employe PRIMARY KEY (numE)
 );
+
+
+CREATE VIEW ClientTun
+  AS
+  SELECT idclt, nom, ville, tel
+  FROM Client
+  WHERE ville IN ('Tunis', 'ben arous')
+
+CREATE VIEW ClientCom
+  AS
+  SELECT Client.idclt, nom, ville
+  FROM Client, Commande
+  WHERE Client.idclt = Commande.idclt;
+
+CREATE VIEW ArtCom
+  AS
+  SELECT idart, qtestk
+  FROM Article, Commande;
