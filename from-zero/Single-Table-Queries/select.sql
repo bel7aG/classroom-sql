@@ -137,3 +137,24 @@ SELECT idE, nameE, commision, jobE
 
 
 --OPERATOR   (=, >, <, >=, <=, !=, <>) WARNING (!= and <> is the same)
+
+
+-- () Parentheses
+SELECT idE, nameE
+  FROM EMP
+  WHERE LOWER(jobE) = 'python developer'
+  OR (commision IS NULL OR codeE BETWEEN 200 AND 700 );
+/*        IDE NAMEE
+---------- ---------------
+      1010 bg
+      1020 bel7aG
+      1030 bel7aG
+      1040 bel7aG         */
+
+
+SELECT nameE, jobE
+  FROM EMP
+  WHERE jobE LIKE 'E%';
+/* NAMEE           JOBE
+--------------- --------------------
+bel7aG          ES[6..9] DEVELOPER*/
