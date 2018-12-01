@@ -158,3 +158,5 @@ SELECT nameE, jobE
 /* NAMEE           JOBE
 --------------- --------------------
 bel7aG          ES[6..9] DEVELOPER*/
+
+/* DAY 1 FINISHED WITH THUMBS UP*/
