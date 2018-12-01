@@ -1,5 +1,20 @@
-SELECT naMe
-  FROM BEL7AG;
+-- SELECT *
+--   from Department;
 
-SELECT *
-  FROM BEL7AG;
+
+SELECT jobE
+  FROM emp;
+  /*JOBE
+  --------------------
+  JS DEVELOPER
+  PYTHON DEVELOPER
+  ES[6..9] DEVELOPER
+  JS DEVELOPER*/
+
+SELECT distinct jobE
+  FROM emp;
+  /*    JOBE
+  --------------------
+  JS DEVELOPER
+  PYTHON DEVELOPER
+  ES[6..9] DEVELOPER*/
