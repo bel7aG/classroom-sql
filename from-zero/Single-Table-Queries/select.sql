@@ -106,3 +106,14 @@ SELECT *
      ---------- ----------  ----------
           50    Developers
 */
+
+
+SELECT *
+  FROM Department
+  WHERE loc is not null;
+/*        DNO DNAME      LOC
+---------- ---------- ----------
+        10 Accounting New York
+        20 Research   Dallas
+        30 Operation  Berlin
+        40 Sales      Tunisia*/
