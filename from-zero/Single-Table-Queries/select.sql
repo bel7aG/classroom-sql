@@ -134,3 +134,6 @@ SELECT idE, nameE, commision, jobE
 /*        IDE NAMEE            COMMISION JOBE
 ---------- --------------- ---------- --------------------
       1040 bel7aG                     JS DEVELOPER*/
+
+
+--OPERATOR   (=, >, <, >=, <=, !=, <>) WARNING (!= and <> is the same)
