@@ -107,6 +107,7 @@ SELECT *
           50    Developers
 */
 
+--WARNING +> 0 is not null
 
 SELECT *
   FROM Department
