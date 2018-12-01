@@ -49,20 +49,20 @@ Belhassen          1121032
 bg                 1235411*/
 
 
-SELECT nameE, jobE, comession
+SELECT nameE, jobE, commision
   FROM emp
-  WHERE comession > 200;
-/* NAMEE           JOBE                  COMESSION
+  WHERE commision > 200;
+/* NAMEE           JOBE                  COMMISION
 --------------- -------------------- ----------
 bg              PYTHON DEVELOPER            230
 bel7aG          ES[6..9] DEVELOPER          790*/
 
-SELECT nameE, jobE, comession
+SELECT nameE, jobE, commision
   FROM emp
-  WHERE comession < 300
+  WHERE commision < 300
   AND UPPER(jobE) = 'JS DEVELOPER'
   AND LOWER(nameE) != 'bel7ag';
-/* NAMEE           JOBE                  COMESSION
+/* NAMEE           JOBE                  COMMISION
 --------------- -------------------- ----------
 Belhassen       JS DEVELOPER                120*/
 
@@ -91,10 +91,10 @@ SELECT *
         10 Accounting New York
         30 Operation  Berlin*/
 
-SELECT nameE, codeE, jobE, city, comession
+SELECT nameE, codeE, jobE, city, commision
   FROM emp
-  WHERE comession BETWEEN 10 AND 150;
-/* NAMEE                CODEE JOBE                 CITY             COMESSION
+  WHERE commision BETWEEN 10 AND 150;
+/* NAMEE                CODEE JOBE                 CITY             COMMISION
 --------------- ---------- -------------------- --------------- ----------
 Belhassen             1000 JS DEVELOPER         tunis                  120
 bel7aG                1010 JS DEVELOPER         ben arous               49*/
@@ -118,3 +118,19 @@ SELECT *
         20 Research   Dallas
         30 Operation  Berlin
         40 Sales      Tunisia*/
+
+
+/* Exercice:
+  Write a query that (idE, namee, commision, jobe) returns those employees that don't make any commision
+  and have a code employee (codeE) greater than 100 but less than 4500.
+  Exclude those employees that have code between 290 AND 700 */
+
+SELECT idE, nameE, commision, jobE
+  FROM emp
+  WHERE commision is null
+  OR commision = 0
+  AND codeE BETWEEN 101 AND 4499
+  AND codeE NOT BETWEEN 290 AND 700;
+/*        IDE NAMEE            COMMISION JOBE
+---------- --------------- ---------- --------------------
+      1040 bel7aG                     JS DEVELOPER*/
