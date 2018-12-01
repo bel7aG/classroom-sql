@@ -28,6 +28,10 @@ INSERT INTO Department
   VALUES(seq_dno.nextval, 'Sales', 'Tunisia');
 
 
+  INSERT INTO Department(dno, dName)
+    VALUES(seq_dno.nextval, 'Developers');
+
+
 CREATE TABLE emp(
   idE Number(4),
   nameE char(15) NOT NULL,

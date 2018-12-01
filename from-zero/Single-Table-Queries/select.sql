@@ -98,3 +98,11 @@ SELECT nameE, codeE, jobE, city, comession
 --------------- ---------- -------------------- --------------- ----------
 Belhassen             1000 JS DEVELOPER         tunis                  120
 bel7aG                1010 JS DEVELOPER         ben arous               49*/
+
+SELECT *
+  FROM Department
+  WHERE loc is null;
+/*        DNO   DNAME          LOC
+     ---------- ----------  ----------
+          50    Developers
+*/
