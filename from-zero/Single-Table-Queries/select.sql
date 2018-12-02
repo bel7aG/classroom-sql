@@ -239,9 +239,22 @@ FROM EMP
 ORDER BY commision DESC;
 /* NAME            Employee job          COMMISION
 --------------- -------------------- ----------
-bel7aG          JS DEVELOPER
+bel7aG          JS DEVELOPER                 -
 bel7aG          ES[6..9] DEVELOPER          790
 bg              PYTHON DEVELOPER            230
 Belhassen       JS DEVELOPER                120
 bel7aG          JS DEVELOPER                 49
 bel7aG          JS DEVELOPER                  0*/
+
+/* ORDER BY JOB NAME AND AFTER THE JOB WAS ORDERED I ASC THE COMMISION */
+SELECT nameE, jobE, commision
+  FROM EMP
+  ORDER BY jobE, commision ASC;
+/* NAMEE           JOBE                  COMMISION
+--------------- -------------------- ----------
+bel7aG          ES[6..9] DEVELOPER          790
+bel7aG          JS DEVELOPER                  0
+bel7aG          JS DEVELOPER                 49
+Belhassen       JS DEVELOPER                120
+bel7aG          JS DEVELOPER
+bg              PYTHON DEVELOPER            230*/
