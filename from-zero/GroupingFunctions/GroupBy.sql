@@ -54,3 +54,8 @@ SELECT MIN(commision), nameE
 -------------- ---------------
            120 Belhassen
            230 bg             */
+
+
+SELECT COUNT(jobE), jobE
+  FROM EMP
+  GROUP BY jobE;
