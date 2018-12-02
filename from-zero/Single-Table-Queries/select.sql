@@ -167,8 +167,17 @@ bel7aG          ES[6..9] DEVELOPER*/
 
 SELECT jobE JobEmployee, nameE NameEmployee
   FROM EMP;
-  /*
-JOBEMPLOYEE          NAMEEMPLOYEE
+  /*JOBEMPLOYEE          NAMEEMPLOYEE
+-------------------- ---------------
+JS DEVELOPER         Belhassen
+PYTHON DEVELOPER     bg
+ES[6..9] DEVELOPER   bel7aG
+JS DEVELOPER         bel7aG
+JS DEVELOPER         bel7aG
+JS DEVELOPER         bel7aG*/
+SELECT jobE "Job Employee", nameE "Name Employee"  -- i have space so i need ""quotations
+  FROM EMP;
+  /* Job Employee         Name Employee
 -------------------- ---------------
 JS DEVELOPER         Belhassen
 PYTHON DEVELOPER     bg
