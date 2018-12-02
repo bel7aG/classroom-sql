@@ -217,3 +217,31 @@ bel7aG          city  is ben arous
 bel7aG          city  is ben arous
 bel7aG          city  is ben arous
 bel7aG          city  is ben arous*/
+
+
+/* MOVING TO =>(  ORDER BY  ) [WARNING WHEN I ORDER A COLUMN THE ENTIRE RECORD ORDERD]*/
+
+/* ASC IS THE DEFAULT VALUE FOR ORDER BY */
+SELECT nameE AS name, jobE AS "Employee job", commision
+  FROM EMP
+  WHERE commision is not null
+  AND commision != 0
+  ORDER BY commision ASC;
+/*  NAME            Employee job          COMMISION
+--------------- -------------------- ----------
+bel7aG          JS DEVELOPER                 49
+Belhassen       JS DEVELOPER                120
+bg              PYTHON DEVELOPER            230
+bel7aG          ES[6..9] DEVELOPER          790*/
+
+SELECT nameE AS name, jobE AS "Employee job", commision
+FROM EMP
+ORDER BY commision DESC;
+/* NAME            Employee job          COMMISION
+--------------- -------------------- ----------
+bel7aG          JS DEVELOPER
+bel7aG          ES[6..9] DEVELOPER          790
+bg              PYTHON DEVELOPER            230
+Belhassen       JS DEVELOPER                120
+bel7aG          JS DEVELOPER                 49
+bel7aG          JS DEVELOPER                  0*/
