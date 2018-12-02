@@ -73,8 +73,59 @@ bel7aG          IS THE NAME and their job is JS DEVELOPER*/
 
               /*    initcap(str)    */
 
-SELECT initcap('hello my name iS Belhassen Gharsallah you can call Me bel7aG.') AS GREETING
+SELECT initcap('hello my name iS Belhassen Gharsallah you can call Me bel7aG.') AS Greeting
   FROM DUAL;
 /* GREETING
 -------------------------------------------------------------
 Hello My Name Is Belhassen Gharsallah You Can Call Me Bel7ag.*/
+
+
+              /*    LENGTH(str)     */
+
+SELECT LENGTH('bel7aG')
+  FROM DUAL;
+/* LENGTH('BEL7AG')
+----------------
+        6           */
+
+SELECT nameE
+  FROM EMP
+  WHERE LENGTH(nameE) >  6;
+/* NAMEE
+---------------
+Belhassen       */
+
+
+        /* SUBSTR(str, index[1 .. n], number of char) */
+
+SELECT 'bel7aG', substr('bel7aG', 4, 3)
+  FROM DUAL;
+/* 'BEL7A SUB
+------ ---
+bel7aG 7aG*/
+
+        /* LPAD(str, total length of str, char) */
+SELECT LPAD('abc', 5, '$M') --left pad
+  FROM DUAL;
+/* LPAD
+  ----
+  $Mabc    */
+
+SELECT LPAD('abc', 2, '$')
+  FROM DUAL;
+/* LPAD
+  ----
+  ab    */
+
+  /* RPAD(str, total length of str, char) */
+SELECT RPAD('abc', 5, '$M') --Right pad
+FROM DUAL;
+/* RPAD
+----
+abc$M    */
+
+SELECT RPAD('abc', 2, '$')
+FROM DUAL;
+/* RPAD
+----
+ab    */
