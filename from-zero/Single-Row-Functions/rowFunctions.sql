@@ -57,3 +57,16 @@ bel7aG          IS THE NAME and their job is ES[6..9] DEVELOPER
 bel7aG          IS THE NAME and their job is JS DEVELOPER
 bel7aG          IS THE NAME and their job is JS DEVELOPER
 bel7aG          IS THE NAME and their job is JS DEVELOPER*/
+
+
+/* WARNING two concat inside concat :D*/
+SELECT CONCAT(CONCAT(nameE, UPPER(' is the name ')), CONCAT('and their job is ', jobE))
+  FROM EMP;
+/* CONCAT(CONCAT(NAMEE,UPPER('ISTHENAME')),CONCAT('ANDTHEIRJOBIS',JO
+-----------------------------------------------------------------
+Belhassen       IS THE NAME and their job is JS DEVELOPER
+bg              IS THE NAME and their job is PYTHON DEVELOPER
+bel7aG          IS THE NAME and their job is ES[6..9] DEVELOPER
+bel7aG          IS THE NAME and their job is JS DEVELOPER
+bel7aG          IS THE NAME and their job is JS DEVELOPER
+bel7aG          IS THE NAME and their job is JS DEVELOPER*/
