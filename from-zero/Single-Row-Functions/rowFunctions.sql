@@ -70,3 +70,11 @@ bel7aG          IS THE NAME and their job is ES[6..9] DEVELOPER
 bel7aG          IS THE NAME and their job is JS DEVELOPER
 bel7aG          IS THE NAME and their job is JS DEVELOPER
 bel7aG          IS THE NAME and their job is JS DEVELOPER*/
+
+              /*    initcap(str)    */
+
+SELECT initcap('hello my name iS Belhassen Gharsallah you can call Me bel7aG.') AS GREETING
+  FROM DUAL;
+/* GREETING
+-------------------------------------------------------------
+Hello My Name Is Belhassen Gharsallah You Can Call Me Bel7ag.*/
