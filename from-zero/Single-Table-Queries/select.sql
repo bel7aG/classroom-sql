@@ -185,3 +185,35 @@ ES[6..9] DEVELOPER   bel7aG
 JS DEVELOPER         bel7aG
 JS DEVELOPER         bel7aG
 JS DEVELOPER         bel7aG*/
+SELECT jobE AS "Job Employee", nameE AS NameEmployee  -- AS is a SQL STANDARD RECOMMANDED for aliasing
+  FROM EMP;
+  /* Job Employee         NAMEEMPLOYEE
+-------------------- ---------------
+JS DEVELOPER         Belhassen
+PYTHON DEVELOPER     bg
+ES[6..9] DEVELOPER   bel7aG
+JS DEVELOPER         bel7aG
+JS DEVELOPER         bel7aG
+JS DEVELOPER         bel7aG*/
+
+  /*   PIPES || AND CONCATINATION   */
+
+SELECT 'Hello my name is ' || nameE AS "Concatinating value"
+  FROM EMP
+  WHERE LOWER(city) IN ('seattle', 'tunis');
+/* Concatinating value              ''||CITY
+-------------------------------- ----------------
+Hello my name is Belhassen        tunis
+Hello my name is bg               seattle*/
+
+
+SELECT nameE || ' city ' || ' is ' || city AS "Where employee live ?"
+  FROM EMP;
+/*      Where employee live ?
+----------------------------------------
+Belhassen       city  is tunis
+bg              city  is seattle
+bel7aG          city  is ben arous
+bel7aG          city  is ben arous
+bel7aG          city  is ben arous
+bel7aG          city  is ben arous*/
