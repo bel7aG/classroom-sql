@@ -129,3 +129,15 @@ FROM DUAL;
 /* RPAD
 ----
 ab    */
+
+    /* LTRIM(str, char)*/
+SELECT LTRIM('GGbel7aGGGGGG', 'G') as GGbel7aGGGGGG
+  FROM DUAL;
+
+
+    /* RTRIM(str, char)*/
+SELECT RTRIM('GGbel7aGGGGGG', 'G') || '         trim the g on the right' as GGbel7aGGGGGG
+  FROM DUAL;
+/*GGBEL7AGGGGGG
+---------------------------------------
+  GGbel7a         trim the g on the right*/
