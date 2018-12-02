@@ -160,3 +160,19 @@ SELECT nameE, jobE
 bel7aG          ES[6..9] DEVELOPER*/
 
 /* DAY 1 FINISHED WITH THUMBS UP*/
+
+
+
+/*    Aliasing    */
+
+SELECT jobE JobEmployee, nameE NameEmployee
+  FROM EMP;
+  /*
+JOBEMPLOYEE          NAMEEMPLOYEE
+-------------------- ---------------
+JS DEVELOPER         Belhassen
+PYTHON DEVELOPER     bg
+ES[6..9] DEVELOPER   bel7aG
+JS DEVELOPER         bel7aG
+JS DEVELOPER         bel7aG
+JS DEVELOPER         bel7aG*/
