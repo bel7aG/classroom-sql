@@ -1,0 +1,10 @@
+DROP TABLE DUAL;
+
+CREATE TABLE DUAL (
+  dummy VARCHAR(30),
+  CONSTRAINT dummy PRIMARY KEY(dummy)
+);
+
+
+INSERT INTO DUAL
+  VALUES('dummyOuch');
