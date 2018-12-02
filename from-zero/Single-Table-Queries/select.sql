@@ -247,7 +247,7 @@ bel7aG          JS DEVELOPER                 49
 bel7aG          JS DEVELOPER                  0*/
 
 /* ORDER BY JOB NAME AND AFTER THE JOB WAS ORDERED I ASC THE COMMISION */
-SELECT nameE, jobE, commision
+SELECT nameE , jobE, commision
   FROM EMP
   ORDER BY jobE, commision ASC;
 /* NAMEE           JOBE                  COMMISION
