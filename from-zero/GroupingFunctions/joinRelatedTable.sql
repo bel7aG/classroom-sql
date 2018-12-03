@@ -20,6 +20,58 @@ JS ENGENEER          YELLOW          Research           20         20
 NODEJS DEVELOPER     BLACK           Operation          30         30
 PHP DEVELOPER        ALI KLAY        Accounting         10         10*/
 
+SELECT jobE, nameE, dName, emp.dno AS empdno, DEPARTMENT.dno AS DEPDNO
+  FROM EMP, DEPARTMENT
+  WHERE EMP.dno = DEPARTMENT.dno
+  AND LOWER(DEPARTMENT.loc) = 'dallas';
+
+/* JOBE                 NAMEE           DNAME          EMPDNO     DEPDNO
+-------------------- --------------- ---------- ---------- ----------
+JS ENGENEER          YELLOW          Research           20         20*/
+
+
+/*    WE CAN DO ALIASES FOR TABLES TOO */
+
+SELECT jobE, nameE, dName, e.dno AS empdno, d.dno AS DEPDNO
+  FROM EMP e, DEPARTMENT d
+  WHERE e.dno = d.dno
+  AND LOWER(d.loc) = 'dallas';
+/*  JOBE                 NAMEE           DNAME          EMPDNO     DEPDNO
+-------------------- --------------- ---------- ---------- ----------
+JS ENGENEER          YELLOW          Research           20         20   */
+
+
+SELECT jobE, nameE, dName, e.dno AS empdno, d.dno AS DEPDNO
+  FROM (SELECT * FROM EMP) e, DEPARTMENT d
+  WHERE e.dno = d.dno
+  AND LOWER(d.loc) = 'dallas';
+/*  JOBE                 NAMEE           DNAME          EMPDNO     DEPDNO
+-------------------- --------------- ---------- ---------- ----------
+JS ENGENEER          YELLOW          Research           20         20   */
+
+
+SELECT jobE, COUNT(jobE)
+  FROM (SELECT * FROM EMP WHERE jobE IN ('JS DEVELOPER', 'PYTHON DEVELOPER')) e
+  GROUP BY jobE;
+/* JOBE                 COUNT(JOBE)
+-------------------- -----------
+JS DEVELOPER                   4
+PYTHON DEVELOPER               1*/
+
+
+
+/*    INNER JOIN    */
+
+SELECT jobE, nameE, commision, emp.dno
+  FROM EMP
+  RIGHT INNER JOIN DEPARTMENT
+  ON DEPARTMENT.dno = emp.dno;
+
+
+
+
+
+
 
 
 
