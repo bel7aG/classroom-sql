@@ -9,9 +9,20 @@ ALTER TABLE EMP
 
 
 
-SELECT jobE, nameE, dName
+
+
+SELECT jobE, nameE, dName, emp.dno AS empdno, DEPARTMENT.dno AS DEPDNO
   FROM EMP, DEPARTMENT
   WHERE EMP.dno = DEPARTMENT.dno;
+/* JOBE                 NAMEE           DNAME          EMPDNO     DEPDNO
+-------------------- --------------- ---------- ---------- ----------
+JS ENGENEER          YELLOW          Research           20         20
+NODEJS DEVELOPER     BLACK           Operation          30         30
+PHP DEVELOPER        ALI KLAY        Accounting         10         10*/
+
+
+
+
 
 
 
