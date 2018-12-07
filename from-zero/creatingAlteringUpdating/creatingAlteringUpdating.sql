@@ -27,7 +27,7 @@ SELECT * FROM stores;
 SELECT * FROM stores;
 SELECT * FROM stores;
 
-SELECT max(store_id)
+SELECT count(store_id), store_id
   FROM stores;
 
 
@@ -62,3 +62,6 @@ CREATE TABLE really as
   FROM product;
 
 SELECT * FROM really;
+
+SELECT * FROM all_objects
+  WHERE  owner = 'really';

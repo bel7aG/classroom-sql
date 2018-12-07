@@ -1,6 +1,5 @@
-
--- DROP VIEW ClientTun;
--- DROP VIEW ClientCom;
+DROP VIEW ClientTun;
+DROP VIEW ClientCom;
 DROP VIEW CltSousse ;
 DROP VIEW ArtCom;
 DROP TABLE Employe;
@@ -129,9 +128,6 @@ INSERT INTO Commande (numc, datec, mntc, idclt)
 VALUES (10, TO_DATE ('2012/01/02', 'yyyy/mm/dd'), 250.365, 1000);
 
 
-
-
-
 INSERT INTO Commande(numc, datec, mntc, idclt)
 VALUES (20, TO_DATE ('2012-01-03', 'yyyy/mm/dd'), 120.500, 1010);
 
@@ -165,8 +161,8 @@ VALUES (110, TO_DATE ('2006-02-02', 'yyyy/mm/dd'), 1580.000, 4020);
 INSERT INTO Commande(numc, datec, mntc, idclt)
 VALUES (120, TO_DATE ('2006-02-02', 'yyyy/mm/dd'), 280.000, 4020);
 
--- INSERT INTO Commande(numc, datec, mntc, idclt)
---   VALUES (130, TO_DATE ('2006-02-02', 'yyyy/mm/dd'), 680.000, 4050);
+INSERT INTO Commande(numc, datec, mntc, idclt)
+VALUES (130, TO_DATE ('2006-02-02', 'yyyy/mm/dd'), 680.000, 4000);
 
 INSERT INTO Lig_com
 VALUES (10, 1, 2);
@@ -215,11 +211,11 @@ CONSTRAINT cp_facture PRIMARY KEY(codeF),
 CONSTRAINT cf_facture FOREIGN KEY(codeCmd) references Commande(numc)
 );
 
--- ALTER TABLE Facture
---   ADD CONSTRAINT date_ck check(dateF BETWEEN '19/07/2007' AND '22/10/2016');
---
--- ALTER TABLE Facture
---  DROP CONSTRAINT date_ck CASCADE;
+ALTER TABLE Facture
+  ADD CONSTRAINT date_ck check(dateF BETWEEN to_date('19/07/2007', 'dd/mm/yyyy') AND to_date('22/10/2016', 'dd/mm/yyyy'));
+
+ALTER TABLE Facture
+ DROP CONSTRAINT date_ck CASCADE;
 
 CREATE SEQUENCE codeF_seq
 start with 1
@@ -253,19 +249,19 @@ CREATE VIEW ClientTun
 AS
   SELECT idclt, nom, ville, tel
   FROM Client
-  WHERE LOWER(ville) IN ('tunis', 'ben arous')
+  WHERE LOWER(ville) IN ('tunis', 'ben arous');
 
 CREATE VIEW ClientCom
 AS
   SELECT idclt, nom, ville
   FROM Client
-  INNER JOIN Commande USING (idclt)
+  INNER JOIN Commande USING (idclt);
 
-  CREATE VIEW ArtCom
-  AS
-    SELECT idart, desart, qtestk
-    FROM Article
-    INNER JOIN Lig_com USING (idart);
+CREATE VIEW ArtCom
+AS
+  SELECT idart, desart, qtestk
+  FROM Article
+  INNER JOIN Lig_com USING (idart);
 
 
 
@@ -285,9 +281,8 @@ UPDATE Article
 SELECT * FROM Article ;
 
 
--- Impossible to delete because we have children in command and Lig_com tables
 DELETE FROM Lig_com WHERE Numc = 90;
-DELETE FROM Client WHERE Idclt = 1010;
+-- DELETE FROM Client WHERE Idclt = 1010; record in the child table exists.
 
 SELECT idart,
   SUM(Qtecom)
@@ -303,11 +298,6 @@ SELECT Idclt, Idart
   WHERE Idclt = 1010;
 
 
-SELECT idart, SUM()
-  FROM Commande
-  JOIN Lig_com USING (Numc)
-  WHERE (Idclt = 1010 AND Qtecom > 10);
-
 SELECT idart, SUM (qtecom)
   FROM Lig_com
   JOIN Commande
@@ -316,7 +306,108 @@ SELECT idart, SUM (qtecom)
   GROUP BY idart
   having sum (qtecom) > 10;
 
+select numc, idart, qtecom from lig_com;
 
-SELECT numc, count(idart) as nbr_art
-  FROM Lig_com
-  GROUP BY Numc;
+select * from commande;
+
+SELECT idart, sum(qtecom)
+  FROM Lig_com join commande using (numc)
+  where numc = 110
+  group by Idart
+  HAVING sum(qtecom) > 10;
+-- --
+-- SELECT numc, count(idart) AS nbr_art
+--   FROM lig_com,
+--   group by numc;
+--
+-- select idclt, count(numc)
+--   from commande
+--   group by idclt;
+--
+-- select idclt, count(idart)
+--   from article
+--   group by idclt;
+--
+-- /*h*/
+--
+-- select idclt, nom, ville
+--   from client inner join
+
+
+/*g*/
+SELECT numc, COUNT(idart) AS nbr_art
+FROM lig_com
+GROUP BY numc;
+
+SELECT idclt, COUNT(numc) AS nbr_cmd
+FROM commande
+GROUP BY idclt;
+
+SELECT idclt, COUNT(idart) AS nbr_art
+FROM commande
+JOIN Lig_com USING (numc)
+GROUP BY idclt;
+/*h*/
+SELECT idclt, nom, ville
+FROM
+client JOIN commande USING (idclt)
+JOIN lig_com  USING (numc)
+WHERE (idart=2)
+INTERSECT
+SELECT idclt, nom, ville
+FROM
+client JOIN commande USING (idclt)
+JOIN lig_com USING (numc)
+WHERE (idart=3);
+
+/*i*/
+ SELECT idclt,nom
+ FROM Client JOIN commande USING(idclt)
+JOIN lig_com USING (numc)
+WHERE idart IN
+(SELECT idart From lig_com JOIN commande USING(numc) WHERE idclt=1010);
+
+/*j*/
+SELECT idart,Desart,Qtestk,idclt
+FROM ARticle  JOIN lig_com USING(idart)
+JOIN commande USING (numc)
+WHERE (Qtestk<qtemin)
+and idclt in ( 1010,1020);
+
+/* k */
+SELECT nom
+  FROM client
+  where idclt not in (SELECT idclt from COMMANDE);
+
+-- SELECT nom
+--   FROM client
+
+
+SELECT nom
+  FROM CLIENT
+  FULL JOIN commande USING (idclt)
+  where numc is null;
+
+  /*l*/
+
+SELECT idclt, nom
+  FROM client left join commande using (idclt);
+
+/*m*/
+INSERT INTO commande values (12, null, '14-NOV-17', 12000);
+SELECT idclt nom
+  from Client  RIGHT JOIN commande
+  USING(idclt);
+
+/*n*/
+SELECT x.numc, y.numc
+  FROM commande x join commande y
+  on x.datec > y.datec;
+
+
+/*o*/
+SELECT idart, desart, count(numc)
+  from ARticle
+  left join lig_com
+  using (idart)
+  group by idart, desart;
