@@ -56,3 +56,29 @@ select Idartfrom
 /*9*/
 select numc, datec, mntc from COMMANDE
   where mntc = (SELECT max(mntc) from lig_com);
+
+
+  SELECT idclt, nom, ville
+  FROM
+  client JOIN commande USING (idclt)
+  JOIN lig_com  USING (numc)
+  WHERE (idart=2)
+  INTERSECT
+  SELECT idclt, nom, ville
+  FROM
+  client JOIN commande USING (idclt)
+  JOIN lig_com USING (numc)
+  WHERE (idart=3);
+
+
+-- SELECT idclt, nom, Ville
+-- from client
+-- inner join lig_com
+-- on client.idclt = (select idclt from lig_com l where l.idart in (2, 3));
+--
+-- select idclt from lig_com l where l.idart in (2, 3);
+--
+
+select idclt, nom, Ville
+  from client
+  where codep in (2, 3);
