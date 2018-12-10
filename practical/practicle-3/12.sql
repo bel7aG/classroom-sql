@@ -1,5 +1,5 @@
-select Idclt,Nom,Count(Numc) as nbr_com ,sum(Mntc) as tot_mnt
-from Commande join Client
-Using(Idclt)
-group by(Idclt,Nom)
-Having sum(Mntc)>400.000;
+SELECT Idclt,Nom, COUNT(Numc) as nbr_com, SUM(MNTC) as tot_mnt
+  FROM Client INNER JOIN COMMANDE
+  USING(Idclt)
+  GROUP BY (Idclt,Nom)
+  Having SUM(MNTC) > 400.000;

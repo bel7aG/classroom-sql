@@ -1,6 +1,5 @@
-select Idart,Qtestk,sum(qtecom) as tot_qte
-from lig_com join Article
-Using(Idart)
-where Qtemin<Qtestk 
-group by (Idart,Qtestk)
-;
+SELECT Idart, Qtestk, SUM(qtecom) AS tot_qte
+  FROM lig_com JOIN Article
+  Using(Idart)
+  WHERE Qtemin < Qtestk
+  GROUP BY(Idart,Qtestk);

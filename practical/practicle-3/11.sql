@@ -1,4 +1,4 @@
-select Idclt,Nom,Count(Numc) as nbr_com ,sum(Mntc) as tot_mnt
-from Commande join Client
-Using(Idclt)
-group by(Idclt,Nom);
+SELECT IDCLT, Nom, COUNT(Numc) AS nbr_com, SUM(Mntc) AS tot_mnt
+  from Commande join Client
+  Using(Idclt)
+  GROUP BY(Idclt, Nom);
